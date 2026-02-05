@@ -60,25 +60,29 @@ Ce repository est configuré avec des **GitHub Actions** pour faciliter la maint
 
 ---
 
-## 📖 Utilisation
+## 📖 Guide de démarrage & Utilisation
 
-1. **Lancer l'application** :
-   ```bash
-   pnpm tauri dev
-   ```
+### 1. Pré-requis Importants
+- **Dossiers en local** : Pour que l'application fonctionne, il est impératif que les dossiers du Drive (Templates, etc.) soient téléchargés et accessibles en local sur votre machine. L'app ne peut pas accéder aux fichiers s'ils sont uniquement dans le cloud.
+- **Matériel** : Avoir un Mac Apple Silicon (processeur M1 minimum).
 
-2. **Configurer vos sources** :
-   - Glissez-déposez votre fichier **Standard CSV** (données actuelles).
-   - Glissez-déposez le fichier **Previous Year CSV** (optionnel, pour YoY).
+### 2. Gestion des Templates
+L'application scanne intelligemment le dossier que vous lui fournissez :
+- **Structure** : Utilisez le dossier principal (celui du Drive). Il doit contenir un sous-dossier par langue (ex: `FR`, `EN`, `ES`) avec les fichiers `.pptx` à l'intérieur.
+- **Détection** : Dès que ce dossier est sélectionné dans l'app, les langues disponibles sont détectées automatiquement.
+- **Sélection** : Des boutons apparaissent pour chaque langue. Vous pouvez cliquer dessus pour désactiver celles dont vous n'avez pas besoin pour la génération en cours.
 
-3. **Préparer vos templates** :
-   - Organisez vos templates dans des dossiers par langue (ex: `/FR/mon_template.pptx`, `/EN/my_template.pptx`).
+---
 
-4. **Mapper vos données** :
-   - Utilisez l'icône ⚙️ pour définir des règles de mappage spécifiques si vos colonnes ne correspondent pas directement aux tags.
+## 🛠️ Dépannage macOS (Premier Lancement)
 
-5. **Lancer la magie** ✨ :
-   - Cliquez sur **Generate Presentations** et regardez le moteur Rust faire le travail !
+Si vous rencontrez un blocage Apple (Gatekeeper), ouvrez le **Terminal** et tapez la commande suivante pour retirer l'attribut de sécurité "quarantaine" :
+
+```bash
+xattr -cr /Applications/OnePagerGenerator.app
+```
+
+Vous pouvez ensuite lancer l'application normalement.
 
 ---
 
