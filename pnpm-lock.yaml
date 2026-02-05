@@ -9,16 +9,16 @@ importers:
   .:
     dependencies:
       '@tauri-apps/api':
-        specifier: ^2
+        specifier: 2.10.1
         version: 2.10.1
       '@tauri-apps/plugin-dialog':
-        specifier: ^2.4.2
+        specifier: 2.6.0
         version: 2.6.0
       '@tauri-apps/plugin-fs':
-        specifier: ^2.4.4
+        specifier: 2.4.5
         version: 2.4.5
       '@tauri-apps/plugin-opener':
-        specifier: ^2
+        specifier: 2.5.3
         version: 2.5.3
       '@types/canvas-confetti':
         specifier: ^1.9.0
@@ -49,7 +49,7 @@ importers:
         specifier: ^4.1.18
         version: 4.1.18
       '@tauri-apps/cli':
-        specifier: ^2
+        specifier: 2.10.0
         version: 2.10.0
       '@types/react':
         specifier: ^19.1.8
