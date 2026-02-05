@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePagerGenerator - Supercharged Presentation Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg: #09090b;
+            --card-bg: #18181b;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --border: #27272a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.025em;
+        }
+
+        .logo img {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(9, 9, 11, 0) 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--text);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background-color: #e4e4e7;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text);
+            border: 1px border var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27272a;
+            transform: translateY(-2px);
+        }
+
+        /* Features */
+        .features {
+            padding: 6rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 6rem 0;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.05));
+            border-radius: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .platform-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer {
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero-glow"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="kawaii_icon.png" alt="Logo">
+                OnePagerGenerator
+            </div>
+            <a href="https://github.com" class="btn btn-secondary">
+                <i data-lucide="github"></i> GitHub
+            </a>
+        </nav>
+
+        <section class="hero">
+            <h1>Générez vos rapports <br> en un temps record.</h1>
+            <p>Automatisez la création de vos One-Pagers PowerPoint avec un moteur Rust ultra-rapide et une interface
+                intuitive.</p>
+            <div class="cta-group">
+                <a href="#download" class="btn btn-primary">Télécharger l'application</a>
+                <a href="https://github.com" class="btn btn-secondary">Voir le code source</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="zap" size="32"></i></div>
+                <h3>Vitesse Rust</h3>
+                <p>Un moteur natif conçu pour traiter des milliers de lignes de données et générer des dizaines de PPTX
+                    en quelques secondes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="languages" size="32"></i></div>
+                <h3>Multi-langues</h3>
+                <p>Support natif pour FR, EN, DE, IT, ES. Détection automatique des langues dans vos dossiers de
+                    templates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="settings-2" size="32"></i></div>
+                <h3>Smart Mappings</h3>
+                <p>Associez n'importe quelle colonne CSV à vos tags PowerPoint dynamiquement, sans modifier vos fichiers
+                    sources.</p>
+            </div>
+        </section>
+
+        <section id="download" class="download">
+            <h2>Prêt à booster votre productivité ?</h2>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <i data-lucide="apple" size="48"></i>
+                    <div>
+                        <h4 style="margin-bottom: 0.5rem;">macOS</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">Version Apple
+                            Silicon & Intel</p>
+                    </div>
+                    <a href="https://github.com/alexandre/OnePager/releases" class="btn btn-primary"
+                        style="width: 100%; justify-content: center;">
+                        <i data-lucide="download"></i> .dmg
+                    </a>
+                </div>
+                <div class="platform-card">
+                    <i data-lucide="monitor" size="48"></i>
+                    <div>
+                        <h4 style="margin-bottom: 0.5rem;">Windows</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">Compatible
+                            Windows 10 & 11</p>
+                    </div>
+                    <a href="https://github.com/alexandre/OnePager/releases" class="btn btn-primary"
+                        style="width: 100%; justify-content: center;">
+                        <i data-lucide="download"></i> .exe / .msi
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Fait par Alexandre Enouf avec ❤️ — OnePagerGenerator 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

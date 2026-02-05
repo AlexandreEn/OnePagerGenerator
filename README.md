@@ -34,8 +34,12 @@ OnePagerGenerator permet d'automatiser la création de rapports "One Pager" à g
 
 ---
 
-## 📥 Installation
+## 📥 Téléchargement & Installation
 
+### Version Stable
+Vous pouvez télécharger la dernière version stable pour macOS et Windows sur la page des [Releases](https://github.com/votre-compte/OnePager/releases).
+
+### Installation (Développement)
 ```bash
 # Cloner le projet
 git clone [url-du-repo]
@@ -44,6 +48,15 @@ cd OnePager
 # Installer les dépendances
 pnpm install
 ```
+
+---
+
+## 🚀 Déploiement & Automatisation
+
+Ce repository est configuré avec des **GitHub Actions** pour faciliter la maintenance :
+
+- **Releases Automatiques** : Dès qu'un tag `v*` est poussé sur GitHub, l'application est compilée pour macOS et Windows, et une release est créée automatiquement.
+- **Landing Page** : Le site de présentation dans le dossier `/website` est automatiquement déployé sur **GitHub Pages** à chaque modification sur `main`.
 
 ---
 
