@@ -60,6 +60,28 @@ Ce repository est configuré avec des **GitHub Actions** pour faciliter la maint
 
 ---
 
+## 📦 Guide : Créer une nouvelle Release
+
+Pour mettre à jour l'application et générer de nouveaux installeurs :
+
+1.  **Mettre à jour la version** dans `package.json` et `src-tauri/tauri.conf.json`.
+2.  **Commiter les changements** :
+    ```bash
+    git add .
+    git commit -m "Chore: Bump version to X.Y.Z"
+    git push
+    ```
+3.  **Créer et pousser le tag** (déclenche le build) :
+    ```bash
+    git tag vX.Y.Z
+    git push origin vX.Y.Z
+    ```
+
+> [!TIP]
+> **Relancer une release échouée** : Si vous devez re-pousser le même tag (à éviter en temps normal), supprimez d'abord le tag local (`git tag -d v1.0.0`) et distant (`git push origin :refs/tags/v1.0.0`).
+
+---
+
 ## 📖 Guide de démarrage & Utilisation
 
 ### 1. Pré-requis Importants
