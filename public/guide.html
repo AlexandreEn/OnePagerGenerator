@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePager Generator - User Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-zinc-950 text-zinc-100 p-8 md:p-16">
+
+    <div class="max-w-3xl mx-auto space-y-12">
+
+        <header class="flex items-center gap-6">
+            <img src="/kawaii_icon.png" class="w-24 h-24 rounded-2xl shadow-2xl shadow-indigo-500/20" alt="Logo">
+            <div>
+                <h1
+                    class="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                    OnePager Generator</h1>
+                <p class="text-zinc-400 mt-2 text-lg">The ultimate tool for automated PowerPoint generation.</p>
+            </div>
+        </header>
+
+        <section class="space-y-6">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+                    <span class="bg-indigo-500 w-8 h-8 rounded-lg flex items-center justify-center text-sm">1</span>
+                    Select your Sources
+                </h2>
+                <ul class="space-y-3 text-zinc-400">
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-400 mt-1">•</span>
+                        <span><strong>Standard CSV:</strong> The main data file containing current year metrics.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-400 mt-1">•</span>
+                        <span><strong>Previous Year CSV:</strong> (Optional) Data for year-over-year comparisons.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+                    <span class="bg-fuchsia-500 w-8 h-8 rounded-lg flex items-center justify-center text-sm">2</span>
+                    Templates & Output
+                </h2>
+                <ul class="space-y-3 text-zinc-400">
+                    <li class="flex items-start gap-2">
+                        <span class="text-fuchsia-400 mt-1">•</span>
+                        <span><strong>Templates Directory:</strong> Folder containing language subfolders (FR, EN, etc.)
+                            with <code>.pptx</code> templates.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-fuchsia-400 mt-1">•</span>
+                        <span><strong>Output Directory:</strong> Where the generated folders and presentations will be
+                            saved.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold mb-4 text-white flex items-center gap-2">
+                    <span class="bg-emerald-500 w-8 h-8 rounded-lg flex items-center justify-center text-sm">3</span>
+                    Special Mappings (Advanced)
+                </h2>
+                <p class="text-zinc-400 mb-4">
+                    Click the <span class="text-white bg-zinc-800 px-2 py-1 rounded mx-1">⚙️ Gear Icon</span> to
+                    configure custom rules.
+                </p>
+                <div class="bg-zinc-950 rounded-xl p-4 border border-zinc-800 font-mono text-sm text-zinc-300">
+                    <div class="flex justify-between border-b border-zinc-800 pb-2 mb-2">
+                        <span>CSV Column</span>
+                        <span>PPTX Tag</span>
+                    </div>
+                    <div class="flex justify-between text-zinc-500">
+                        <span>Nom du client</span>
+                        <span>&lt;&lt;NOM DU CLIENT&gt;&gt;</span>
+                    </div>
+                    <div class="flex justify-between text-zinc-500">
+                        <span>JJ/MM/AAAA</span>
+                        <span>&lt;&lt;[JJ/MM/AAAA]&gt;&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-zinc-600 pt-8 border-t border-zinc-900">
+            <p>© 2026 OnePager Gen. Built with Tauri & Rust.</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
