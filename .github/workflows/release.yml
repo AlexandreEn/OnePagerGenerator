@@ -47,5 +47,5 @@ jobs:
           tagName: v__VERSION__ # tauri-action replaces this with app version from tauri.conf.json
           releaseName: "OnePagerGenerator v__VERSION__"
           releaseBody: "See the assets below to download the latest version of OnePagerGenerator."
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
