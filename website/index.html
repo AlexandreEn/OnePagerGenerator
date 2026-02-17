@@ -321,31 +321,8 @@
 
         <section id="download" class="download">
             <h2>Prêt à booster votre productivité ?</h2>
-            <div class="platform-grid">
-                <div class="platform-card">
-                    <i data-lucide="apple" size="48"></i>
-                    <div>
-                        <h4 style="margin-bottom: 0.5rem;">macOS</h4>
-                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">Version Apple
-                            Silicon & Intel</p>
-                    </div>
-                    <a href="https://github.com/AlexandreEn/OnePagerGenerator/releases/latest" class="btn btn-primary"
-                        style="width: 100%; justify-content: center;">
-                        <i data-lucide="download"></i> .dmg
-                    </a>
-                </div>
-                <div class="platform-card">
-                    <i data-lucide="monitor" size="48"></i>
-                    <div>
-                        <h4 style="margin-bottom: 0.5rem;">Windows</h4>
-                        <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">Compatible
-                            Windows 10 & 11</p>
-                    </div>
-                    <a href="https://github.com/AlexandreEn/OnePagerGenerator/releases/latest" class="btn btn-primary"
-                        style="width: 100%; justify-content: center;">
-                        <i data-lucide="download"></i> .exe / .msi
-                    </a>
-                </div>
+            <div id="platform-grid" class="platform-grid">
+                <p style="color: var(--text-muted);">Chargement des téléchargements...</p>
             </div>
         </section>
 
@@ -355,7 +332,133 @@
     </div>
 
     <script>
+        // Initialize Lucide icons
         lucide.createIcons();
+
+        // Fetch and display download links from GitHub releases
+        async function loadDownloadLinks() {
+            const platformGrid = document.getElementById('platform-grid');
+            const repoOwner = 'AlexandreEn';
+            const repoName = 'OnePagerGenerator';
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`);
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch release data');
+                }
+
+                const release = await response.json();
+                const assets = release.assets || [];
+
+                // Clear loading message
+                platformGrid.innerHTML = '';
+
+                // Platform detection logic
+                const platforms = [];
+
+                // macOS detection
+                const macAssets = assets.filter(a => a.name.toLowerCase().includes('.dmg'));
+                if (macAssets.length > 0) {
+                    // Prefer aarch64 (Apple Silicon) but show any .dmg
+                    const macAsset = macAssets.find(a => a.name.includes('aarch64')) || macAssets[0];
+                    platforms.push({
+                        name: 'macOS',
+                        icon: 'apple',
+                        description: 'Version Apple Silicon & Intel',
+                        downloadUrl: macAsset.browser_download_url,
+                        extension: '.dmg'
+                    });
+                }
+
+                // Windows detection
+                const winAssets = assets.filter(a =>
+                    a.name.toLowerCase().includes('.msi') ||
+                    a.name.toLowerCase().includes('.exe')
+                );
+                if (winAssets.length > 0) {
+                    const winAsset = winAssets.find(a => a.name.includes('.msi')) || winAssets[0];
+                    const extension = winAsset.name.includes('.msi') ? '.msi' : '.exe';
+                    platforms.push({
+                        name: 'Windows',
+                        icon: 'monitor',
+                        description: 'Compatible Windows 10 & 11',
+                        downloadUrl: winAsset.browser_download_url,
+                        extension: extension
+                    });
+                }
+
+                // Linux detection (optional, for future)
+                const linuxAssets = assets.filter(a =>
+                    a.name.toLowerCase().includes('.appimage') ||
+                    a.name.toLowerCase().includes('.deb') ||
+                    a.name.toLowerCase().includes('.rpm')
+                );
+                if (linuxAssets.length > 0) {
+                    const linuxAsset = linuxAssets[0];
+                    const extension = linuxAsset.name.match(/\.(appimage|deb|rpm)$/i)?.[0] || '.AppImage';
+                    platforms.push({
+                        name: 'Linux',
+                        icon: 'terminal',
+                        description: 'Compatible Ubuntu, Fedora & plus',
+                        downloadUrl: linuxAsset.browser_download_url,
+                        extension: extension
+                    });
+                }
+
+                // Generate platform cards
+                if (platforms.length === 0) {
+                    platformGrid.innerHTML = `
+                        <p style="color: var(--text-muted);">
+                            Aucun téléchargement disponible pour le moment. 
+                            <a href="https://github.com/${repoOwner}/${repoName}/releases" 
+                               style="color: var(--primary); text-decoration: underline;">
+                                Voir les releases
+                            </a>
+                        </p>
+                    `;
+                    return;
+                }
+
+                platforms.forEach(platform => {
+                    const card = document.createElement('div');
+                    card.className = 'platform-card';
+                    card.innerHTML = `
+                        <i data-lucide="${platform.icon}" size="48"></i>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem;">${platform.name}</h4>
+                            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                ${platform.description}
+                            </p>
+                        </div>
+                        <a href="${platform.downloadUrl}" 
+                           class="btn btn-primary" 
+                           style="width: 100%; justify-content: center;">
+                            <i data-lucide="download"></i> ${platform.extension}
+                        </a>
+                    `;
+                    platformGrid.appendChild(card);
+                });
+
+                // Re-initialize Lucide icons for dynamically added content
+                lucide.createIcons();
+
+            } catch (error) {
+                console.error('Error loading download links:', error);
+                platformGrid.innerHTML = `
+                    <p style="color: var(--text-muted);">
+                        Impossible de charger les téléchargements. 
+                        <a href="https://github.com/${repoOwner}/${repoName}/releases/latest" 
+                           style="color: var(--primary); text-decoration: underline;">
+                            Voir la dernière release
+                        </a>
+                    </p>
+                `;
+            }
+        }
+
+        // Load download links when page is ready
+        loadDownloadLinks();
     </script>
 </body>
 
