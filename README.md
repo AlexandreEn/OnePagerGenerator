@@ -37,12 +37,12 @@ OnePagerGenerator permet d'automatiser la création de rapports "One Pager" à g
 ## 📥 Téléchargement & Installation
 
 ### Version Stable
-Vous pouvez télécharger la dernière version stable pour macOS et Windows sur la page des [Releases](https://github.com/AlexandreEn/OnePagerGenerator/releases/latest).
+Vous pouvez télécharger la dernière version stable pour macOS et Windows sur la page des [Releases](https://github.com/PartooHub/OnePagerGenerator/releases/latest).
 
 ### Installation (Développement)
 ```bash
 # Cloner le projet
-git clone https://github.com/AlexandreEn/OnePagerGenerator.git
+git clone https://github.com/PartooHub/OnePagerGenerator.git
 cd OnePager
 
 # Installer les dépendances
